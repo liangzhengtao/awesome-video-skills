@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-markdown:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Lint all Markdown files
+        run: markdownlint '**/*.md' --ignore node_modules --config .markdownlint.json || true
+
+  validate-skills:
+    name: Validate Skill Files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check skill files exist
+        run: |
+          echo "Checking skill files..."
+          SKILL_COUNT=$(find skills -name "*.md" | wc -l)
+          echo "Found $SKILL_COUNT skill files"
+          if [ "$SKILL_COUNT" -lt 10 ]; then
+            echo "ERROR: Expected at least 10 skill files, found $SKILL_COUNT"
+            exit 1
+          fi
+
+      - name: Check minimum line count
+        run: |
+          echo "Checking minimum line counts (100 lines)..."
+          FAILED=0
+          for f in skills/**/*.md; do
+            LINES=$(wc -l < "$f")
+            if [ "$LINES" -lt 100 ]; then
+              echo "FAIL: $f has only $LINES lines (minimum: 100)"
+              FAILED=1
+            else
+              echo "PASS: $f ($LINES lines)"
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            exit 1
+          fi
+
+      - name: Check required sections
+        run: |
+          echo "Checking required sections in skill files..."
+          FAILED=0
+          REQUIRED_SECTIONS=("When to Use" "Instructions for AI Assistant" "Templates" "Common Patterns" "Pitfalls to Avoid")
+          for f in skills/**/*.md; do
+            for section in "${REQUIRED_SECTIONS[@]}"; do
+              if ! grep -qi "## $section" "$f"; then
+                echo "FAIL: $f missing section: $section"
+                FAILED=1
+              fi
+            done
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            exit 1
+          fi
+          echo "All skill files have required sections."
+
+  check-links:
+    name: Check Internal Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check README internal links
+        run: |
+          echo "Checking internal file references in README.md..."
+          FAILED=0
+          # Extract markdown links that point to local files
+          grep -oP '\[.*?\]\(\K[^)]+' README.md | grep -v '^http' | while read -r link; do
+            # Remove any anchor
+            file_path=$(echo "$link" | sed 's/#.*//')
+            if [ -n "$file_path" ] && [ ! -f "$file_path" ]; then
+              echo "BROKEN LINK: $link -> $file_path not found"
+              FAILED=1
+            fi
+          done
+          echo "Link check complete."

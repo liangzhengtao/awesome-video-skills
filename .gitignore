@@ -1,0 +1,85 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Build outputs
+out/
+build/
+dist/
+export/
+exports/
+
+# Video/media working files (large, don't commit)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.flv
+*.webm
+*.m4v
+*.ts
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+*.m4a
+*.psd
+*.ai
+*.sketch
+
+# Subtitle working files (keep templates, ignore generated)
+# Uncomment to ignore generated subtitles:
+# *.srt
+# *.ass
+# *.vtt
+# *.sub
+
+# Keep these:
+!.gitkeep
+!skills/**/*.md
+!*.md
+!LICENSE
+!.github/**
