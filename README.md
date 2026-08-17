@@ -15,6 +15,8 @@
 
 ---
 
+<a name="english"></a>
+
 ## The Problem
 
 You spend **hours** googling FFmpeg flags, looking up DaVinci Resolve shortcuts, and re-writing the same subtitle scripts — every single project. Your AI assistant doesn't know your workflow, your presets, or your preferences.
@@ -152,6 +154,8 @@ Quick way to contribute:
 [MIT](LICENSE) © [liangzhengtao](https://github.com/liangzhengtao)
 
 ---
+
+<a name="中文"></a>
 
 <div id="中文">
 
