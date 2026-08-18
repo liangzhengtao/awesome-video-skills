@@ -258,3 +258,48 @@ Dialogue: 0,0:00:01.00,0:00:04.00,Secondary,,0,0,0,,Welcome to this tutorial
 | Lines too long (> 42 chars) | Hard to read quickly | Split at natural phrase boundaries |
 | Not proofreading Whisper output | Whisper makes errors, especially with names | Always review and correct before burning |
 | Ignoring subtitle accessibility | Users with hearing impairments depend on accuracy | Include speaker identification, sound effects in brackets |
+
+---
+
+## 中文版本
+
+### 使用场景
+
+- 自动将视频/音频转录为字幕
+- 从语音生成 SRT 或 ASS 字幕文件
+- 将字幕烧录（硬编码）到视频中
+- 自定义字幕字体、颜色和特效
+- 批量处理多个视频的字幕生成
+- 同步字幕与视频时间轴
+- 创建卡拉 OK 风格或动画字幕
+
+### 核心步骤
+
+1. **选对工具** — Whisper 做转录，FFmpeg 做烧录，Aegisub 做高级样式
+2. **语言检测** — 确认音频包含什么语言
+3. **精度 vs 速度** — 更大的 Whisper 模型更准但更慢
+4. **格式选择** — SRT 简单通用，ASS 支持样式，VTT 适合网页
+5. **时间精度** — 始终用源视频验证时间轴
+6. **无障碍性** — 确保字幕符合无障碍标准（对比度、大小、位置）
+
+### 模板说明
+
+| 模板 | 用途 | 要点 |
+|------|------|------|
+| Whisper 转录 | 语音转文字 | 推荐 turbo 模型（6GB VRAM），支持批量处理 |
+| SRT 格式参考 | 标准字幕格式 | 序号 + 时间戳 + 文本，UTF-8 with BOM |
+| ASS 字幕样式 | 高级样式字幕 | 淡入淡出/定位/对齐/颜色/卡拉 OK 等 override 标签 |
+| FFmpeg 烧录字幕 | 硬编码字幕到视频 | 软字幕用 `-c:s mov_text`，硬字幕用 `subtitles=` 或 `ass=` 滤镜 |
+| 自动同步修正 | 时间轴调整 | FFmpeg 延迟、SubtitleEdit 同步、Python pysrt 处理 |
+
+### 常见陷阱
+
+| 陷阱 | 问题 | 解决方案 |
+|------|------|----------|
+| 生产环境用 tiny 模型 | 错误率高，口音识别差 | 生产用 medium 或 turbo 模型 |
+| 不指定语言 | Whisper 可能误检并产生幻觉 | 始终设置 `--language` |
+| 烧录 SRT 无样式控制 | 看起来基础且不专业 | 用 ASS 格式自定义样式 |
+| CJK 字符忘记 UTF-8 BOM | 中日韩字符乱码 | 始终用 UTF-8 with BOM 保存 |
+| 字幕显示时间太短（<1秒） | 观众看不清 | 最少 1.5 秒，按文本长度缩放 |
+| 行太长（>42字符） | 难以快速阅读 | 在自然短语边界处分行 |
+| 不校对 Whisper 输出 | Whisper 有错误，尤其是人名 | 烧录前始终审校和修正 |

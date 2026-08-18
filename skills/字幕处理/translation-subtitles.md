@@ -335,3 +335,46 @@ done
 | Not accounting for text expansion | German/French translations are 20-30% longer | Allow flexible line wrapping and timing |
 | Translating cultural references literally | Jokes and idioms don't translate word-for-word | Adapt to target culture's equivalent expressions |
 | Forgetting subtitle format specifics | ASS color codes, tags need careful handling | Preserve formatting tags when translating |
+
+---
+
+## 中文版本
+
+### 使用场景
+
+- 将字幕从一种语言翻译为另一种语言
+- 为语言学习创建双语字幕
+- 翻译后调整字幕时间（不同语言阅读速度不同）
+- 为分发构建多语言字幕包
+- 质量检查机器翻译字幕
+- 维护跨视频系列的字幕一致性
+
+### 核心步骤
+
+1. **源质量优先** — 源字幕质量差，翻译一定差，先验证源文件准确性
+2. **翻译方式** — 机器翻译（快，需审校）、AI 辅助（平衡）、人工（最佳质量）
+3. **文化适配** — 不是逐字翻译，要适配习语、典故和幽默
+4. **阅读速度** — 不同语言需要不同的显示时间（中文快，德语慢）
+5. **字符限制** — 按语言强制每行字符数限制
+6. **术语一致性** — 跨集/系列维护术语表
+
+### 模板说明
+
+| 模板 | 用途 | 要点 |
+|------|------|------|
+| AI 翻译管线 | Python 自动翻译 SRT | 批量翻译（10条一组保持上下文）、自动调整时间轴、防止重叠 |
+| 命令行翻译 | Whisper + Google 翻译 | 转录 → 翻译 → 烧录 → 生成双语版本 |
+| 双语字幕模板 | ASS 双语格式 | 主语言在下方（粗体大字），源语言在上方（斜体小字，不同颜色） |
+| 翻译质量检查清单 | QA 检查 | 准确性/可读性/时间轴/文化适配/技术规范 |
+
+### 常见陷阱
+
+| 陷阱 | 问题 | 解决方案 |
+|------|------|----------|
+| 机器翻译不审校 | 语句不通或乱码 | 至少抽检，最好人工审校 |
+| 保留原文断行 | 目标语言短语结构不同 | 按目标语言自然短语边界重新断行 |
+| 忽略阅读速度差异 | 中文字幕需要更多显示时间 | 按语言阅读速度表调整时间轴 |
+| 逐字翻译专有名词 | "New York" 不应变成 "新约克" | 使用术语表中的既定翻译 |
+| 丢失说话人标识 | 多人对话变得混乱 | 翻译中保留 `[Speaker A]` 标签 |
+| 不考虑文本膨胀 | 德语/法语翻译长 20-30% | 允许灵活换行和延长时间轴 |
+| 忘记字幕格式特性 | ASS 颜色代码、标签需谨慎处理 | 翻译时保留格式标签 |

@@ -359,3 +359,47 @@ ffmpeg -f lavfi -i "anoisesrc=d=10:c=pink:r=44100:a=0.001" room_tone.wav
 | Ignoring sample rate mismatch | Pops, clicks, or speed changes | Match all source files to the project sample rate |
 | Over-compressing dynamics | Audio sounds flat and lifeless | Use gentle ratios (2:1 to 4:1), preserve natural dynamics |
 | Not checking on multiple devices | Audio may sound good on headphones but bad on speakers | Check mix on headphones, speakers, and phone |
+
+---
+
+## 中文版本
+
+### 使用场景
+
+- 去除录音中的背景噪音
+- 将音频电平归一化到广播标准
+- 均衡人声录音以提高清晰度
+- 混合背景音乐与对白
+- 添加音效和环境音
+- 处理播客或采访音频
+- 转换音频格式和采样率
+
+### 核心步骤
+
+1. **识别问题** — 确认是噪音、电平、频率平衡还是混音问题
+2. **选对工具** — FFmpeg 做批处理/编程，Audacity 做交互式，Python 做自定义
+3. **保持品质** — 最终导出前始终用 WAV/FLAC 工作
+4. **检查响度标准** — 匹配目标平台要求（YouTube: -14 LUFS）
+5. **非破坏性工作流** — 原始文件不动，始终输出到新文件
+6. **处理顺序** — 降噪 → EQ → 压缩 → 归一化 → 限幅
+
+### 模板说明
+
+| 模板 | 用途 | 要点 |
+|------|------|------|
+| FFmpeg 音频滤镜 | 降噪/EQ/压缩/归一化 | highpass/lowpass/afftdn/equalizer/acompressor/loudnorm |
+| FFmpeg 音频混合 | 人声+音乐混合 | 简单叠加、侧链压低（音乐自动让位）、淡入淡出 |
+| Python pydub 处理 | 程序化音频处理 | 静音去除、速度调整、背景音乐混合、批量处理 |
+| Audacity 处理链 | 交互式处理 | 降噪→EQ→压缩→限幅→响度归一化，完整人声处理链 |
+
+### 常见陷阱
+
+| 陷阱 | 问题 | 解决方案 |
+|------|------|----------|
+| 先归一化再压缩 | 压缩器改变峰值，归一化白做 | 始终按顺序：降噪→EQ→压缩→归一化→限幅 |
+| 降噪过度 | 产生水下/机器人音效 | 用最小设置（6-12dB），接受少量背景噪音 |
+| 降低位深不加抖动 | 安静段落出现量化噪声 | 24-bit 转 16-bit 时启用 dither |
+| 音乐和人声同电平 | 音乐掩盖人声 | 音乐应低于人声 12-18dB |
+| 处理 MP3/AAC 再重编码 | 双重压缩伪影 | 最终导出前始终用 WAV/FLAC 工作 |
+| 忽略采样率不匹配 | 爆音、咔嗒声或速度变化 | 所有源文件匹配项目采样率 |
+| 过度压缩动态 | 音频平淡无生气 | 用温和比率（2:1 到 4:1），保留自然动态 |

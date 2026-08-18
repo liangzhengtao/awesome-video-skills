@@ -258,3 +258,45 @@ Premiere Pro ──→ After Effects (Dynamic Link for VFX/motion graphics)
 | Not saving presets | Recreating the same export settings every time | Save as preset in Media Encoder |
 | Overwriting source files on export | Losing original footage is permanent | Always export to a separate folder |
 | Using VBR 1-pass for target bitrate | Less efficient than 2-pass | Use 2-pass VBR when targeting specific file size |
+
+---
+
+## 中文版本
+
+### 使用场景
+
+- 为 YouTube、TikTok、Instagram 或电视台设置序列
+- 创建和使用不同平台的导出预设
+- 通过 Dynamic Link 联动 After Effects 和 Audition
+- 构建 Essential Graphics 模板（标题、下方三分之一字幕条）
+- 多机位编辑和同步工作流
+- 使用 Lumetri Color 面板调色
+- 在 Premiere 中进行音频混合和声音设计
+
+### 核心步骤
+
+1. **识别工作流** — 确认是编辑、特效、音频还是输出任务
+2. **版本特性** — Premiere Pro 迭代快，关键功能需确认版本
+3. **提供菜单路径** — Premiere 菜单层级深，给出精确路径（如 File → Export → Media）
+4. **预设优先** — 始终建议保存可复用的导出预设
+5. **跨应用集成** — 考虑 Dynamic Link 联动 AE、Audition、Media Encoder
+
+### 模板说明
+
+| 模板 | 用途 | 要点 |
+|------|------|------|
+| 序列设置 | 各平台序列参数 | YouTube 16:9 / TikTok 9:16 / Instagram 1:1 / 广播 NTSC |
+| 导出预设 | Media Encoder 批量导出 | YouTube 1080p 16Mbps VBR 2-pass，TikTok 10Mbps |
+| Essential Graphics | 动态图形模板 | 背景条 + 姓名文字 + 标题文字 + 强调线，可导出为 MOGRT |
+| Dynamic Link | 联动 AE/Audition | 替换为 AE 合成、右键编辑到 Audition，保持短合成 |
+
+### 常见陷阱
+
+| 陷阱 | 问题 | 解决方案 |
+|------|------|----------|
+| 序列设置不匹配素材 | 帧率/分辨率不匹配导致渲染问题 | 右键素材 → New Sequence From Clip |
+| 导出不勾选 Maximum Render Quality | 缩放伪影、色带 | 最终导出始终启用 |
+| Dynamic Link 合成太多 | 回放极其缓慢 | 渲染并替换，保持合成短小 |
+| 忽略 GPU 加速 | 仅软件渲染慢 5-10 倍 | File → Project Settings → General → Renderer: GPU |
+| 直接编辑 H.265 | 实时编辑计算开销大 | 使用代理或先转码为 ProRes/DNxHR |
+| 不保存预设 | 每次重复创建相同导出设置 | 在 Media Encoder 中保存为预设 |

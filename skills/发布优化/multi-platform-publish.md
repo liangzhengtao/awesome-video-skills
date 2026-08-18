@@ -428,3 +428,47 @@ Source: 15-minute YouTube tutorial
 | Ignoring platform-specific features | Missing algorithm boost from native features | Use polls (IG), duets (TikTok), danmaku (Bilibili) |
 | Same thumbnail for all platforms | Each platform has different crop/size rules | Create platform-specific thumbnails |
 | Posting at the same time everywhere | Different audiences peak at different times | Check per-platform analytics for optimal times |
+
+---
+
+## 中文版本
+
+### 使用场景
+
+- 将同一视频发布到多个平台
+- 按平台要求调整尺寸和格式
+- 适配竖版（9:16）、方版（1:1）和横版（16:9）内容
+- 批量导出视频的多个版本
+- 跨平台调度上传时间
+- 为各平台算法优化元数据
+
+### 核心步骤
+
+1. **规格先行** — 每个平台有不同的分辨率、时长、编码和宽高比要求
+2. **内容适配** — 不只是缩放，要适配内容（字幕、开头钩子、CTA）
+3. **一次编辑，多端输出** — 以最高质量编辑一次，然后批量导出变体
+4. **平台特异性开头** — 前 3 秒需要针对不同平台分别优化
+5. **元数据差异化** — 标题、描述、标签和封面因平台而异
+6. **分平台追踪数据** — 各平台受众行为不同，分别追踪表现
+
+### 模板说明
+
+| 模板 | 用途 | 要点 |
+|------|------|------|
+| 平台规格表 | 各平台技术参数 | YouTube 4K/12h、TikTok 1080x1920/10min、B站 4K/120min、抖音 9:16/15min |
+| FFmpeg 批量导出脚本 | 一键导出多平台版本 | YouTube/TikTok/Instagram/B站/Twitter/LinkedIn/抖音 共8个输出 |
+| 元数据适配矩阵 | 各平台标题/描述/标签策略 | YouTube SEO优化、TikTok 短钩子、B站中文描述、抖音挑战标签 |
+| 内容适配策略 | 长短内容互相转化 | 长→短：提取精华30-60秒+竖屏+烧字幕；短→长：5-10个短片组合+叙事线 |
+| 上传自动化 | 批量管理导出和元数据 | Python 脚本生成平台专用上传清单 |
+
+### 常见陷阱
+
+| 陷阱 | 问题 | 解决方案 |
+|------|------|----------|
+| 所有平台上传同一文件 | 各平台最优规格不同 | 导出平台专用版本 |
+| TikTok/Instagram 用 YouTube 链接 | 平台会降权外部链接 | 用平台原生内容，链接放简介 |
+| 所有平台相同描述/标签 | 看起来像自动化发布，降低互动 | 按平台调性调整语气和标签 |
+| 短视频不加烧录字幕 | 80% 社交视频静音观看 | TikTok/Reels/Shorts 始终烧录字幕 |
+| 横版视频发竖版平台 | 黑边或裁剪不自然 | 有意构图地重新适配竖屏 |
+| 忽略平台特有功能 | 错过原生功能的算法加成 | 用 IG 投票、TikTok 合拍、B站弹幕 |
+| 所有平台同一封面 | 各平台裁剪/尺寸规则不同 | 创建平台专用封面 |

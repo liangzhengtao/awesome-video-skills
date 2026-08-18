@@ -280,3 +280,48 @@ Color-match all clips in DaVinci Resolve or Premiere.
 | Skipping post-processing | AI output has artifacts, noise, color issues | Always upscale, stabilize, and color-grade AI output |
 | Using copyrighted styles without care | Legal and ethical risk | Use general style descriptions, not specific artist names |
 | Assuming all tools are equal | Each has different strengths | Match tool to use case (see comparison table) |
+
+---
+
+## 中文版本
+
+### 使用场景
+
+- 从文本提示词生成视频片段
+- 从参考图生成视频（图生视频）
+- 对现有素材应用 AI 风格迁移
+- AI 超分辨率提升低分辨率视频
+- 为视频项目生成 B-roll 素材
+- 创建概念视频和情绪板
+- 扩展或修复现有视频片段
+
+### 核心步骤
+
+1. **选对工具** — 每个工具各有所长（见工具对比表）
+2. **精心设计提示词** — AI 视频质量高度依赖 prompt 工程
+3. **设定期望** — 当前 AI 视频最适合 2-10 秒片段，长视频需要拼接
+4. **迭代工作流** — 生成 → 评估 → 优化提示词 → 重新生成
+5. **后处理** — AI 输出通常需要超分、稳定和调色
+6. **伦理考量** — 标注 AI 生成内容，尊重版权和肖像权
+
+### 模板说明
+
+| 模板 | 用途 | 要点 |
+|------|------|------|
+| STRUCTURE 提示词框架 | 系统化构建 prompt | 主体/镜头类型/风格/场景/色彩/运镜/细节/分辨率/情感 |
+| 平台专用提示词 | Runway/Pika/Sora 各自最佳实践 | 写实/产品/自然、动画/3D、叙事/对比 |
+| 图生视频提示词 | 描述变化而非已有内容 | 聚焦运镜/主体动作/环境变化/时间推移 |
+| AI 超分辨率 | 提升视频分辨率 | Real-ESRGAN（免费）/ Topaz Video AI（付费最佳） |
+| 风格迁移 | 给视频换风格 | 重新生成法 + 逐帧风格迁移（光流插帧） |
+
+### 常见陷阱
+
+| 陷阱 | 问题 | 解决方案 |
+|------|------|----------|
+| 提示词过于复杂 | AI 混淆，结果随机 | 保持聚焦，每个片段一个主要动作 |
+| 忽略时间一致性 | 角色/物体在片段间变化 | 使用参考图和一致的描述 |
+| 不标注 AI 生成 | 伦理和平台政策问题 | 始终标注 AI 生成内容 |
+| 期望完美口型同步 | 当前 AI 无法可靠实现 | 分别生成语音 + 虚拟形象动画 |
+| 一次生成长视频 | 质量显著下降 | 生成 3-8 秒片段再拼接 |
+| 跳过后处理 | 有伪影、噪点、色彩问题 | 始终超分、稳定和调色 |
+| 不加区分使用版权风格 | 法律和伦理风险 | 用通用风格描述，不用具体艺术家名字 |

@@ -283,3 +283,48 @@ Long-tail: ffmpeg tutorial for beginners, how to use ffmpeg windows,
 | Not using end screens | Missing 5-10% subscriber conversion | Always add end screen with subscribe + next video |
 | Uploading inconsistently | Algorithm rewards regular uploaders | Set a realistic schedule and stick to it |
 | Ignoring analytics | Can't improve what you don't measure | Review analytics weekly, adjust strategy monthly |
+
+---
+
+## 中文版本
+
+### 使用场景
+
+- 为 YouTube 视频撰写优化的标题和描述
+- 研究和选择标签以最大化可发现性
+- 设计最大化点击率（CTR）的封面图
+- 基于观众分析规划上传时间表
+- 分析视频表现并调整策略
+- 针对 YouTube Shorts、社区帖子和播放列表优化
+- 理解和配合 YouTube 算法
+
+### 核心步骤
+
+1. **了解领域** — 确认频道主题、目标受众和竞争情况
+2. **数据驱动** — 基于搜索量和竞争数据给出建议
+3. **CTR 为王** — 标题 + 封面共同决定 CTR，作为整体优化
+4. **算法意识** — 观看时长、CTR 和互动率是关键信号
+5. **平台特性** — YouTube、Shorts 和社区各有不同的优化规则
+6. **避免标题党** — 优化点击 AND 满意度，误导内容损害留存率
+
+### 模板说明
+
+| 模板 | 用途 | 要点 |
+|------|------|------|
+| 标题优化 | 提高点击率 | 公式：[钩子] + [关键词] + [利益/好奇心]，60字符以内 |
+| 描述优化 | SEO 和信息传达 | 前2行最关键（搜索展示），加上时间戳/链接/标签段落 |
+| 封面设计 | 视觉吸引力 | 1280x720，人脸+夸张表情，2-4字叠加，互补色 |
+| 标签策略 | 可发现性 | 宽泛词+长尾词+精确匹配，15-30个标签 |
+| 上传时间表 | 观众触达 | 周二至周四最佳，一致性 > 具体时间，每周至少1个视频 |
+
+### 常见陷阱
+
+| 陷阱 | 问题 | 解决方案 |
+|------|------|----------|
+| 标题党无兑现 | 高初始点击，糟糕留存 → 算法惩罚 | 标题承诺的内容必须在视频中兑现 |
+| 完全复制竞争对手标题 | 永远排不到他们前面 | 找到同一话题的独特角度 |
+| 忽略封面图 | 好标题配烂封面 = 低 CTR | 每张封面至少花30分钟设计 |
+| 没有行动号召 | 观众看完就走不订阅 | 在自然节点请求订阅/点赞/评论 |
+| 描述堆砌关键词 | 看起来像垃圾信息 | 自然写作，有机融入关键词 |
+| 不用结尾画面 | 错过 5-10% 的订阅转化 | 始终添加结尾画面（订阅 + 下一个视频） |
+| 上传不规律 | 算法奖励定期上传者 | 设定现实的时间表并坚持 |
