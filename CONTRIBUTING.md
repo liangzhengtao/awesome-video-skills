@@ -57,7 +57,7 @@ Code blocks with practical, copy-paste-ready examples.
 
 ## Common Patterns
 
-Reusable workflows and best practices.
+Reusable workflows and proven patterns.
 
 ## Pitfalls to Avoid
 

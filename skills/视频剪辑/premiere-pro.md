@@ -168,7 +168,7 @@ Premiere Pro ──→ After Effects (Dynamic Link for VFX/motion graphics)
 3. After Effects opens with the clip in a new comp
 4. Edit in After Effects → changes appear live in Premiere
 
-### Best Practices
+### Proven Patterns
 - Keep Dynamic Link comps short (under 30 seconds)
 - Render/preview in After Effects before switching back
 - If playback is slow, right-click in Premiere → Render and Replace
